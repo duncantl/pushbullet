@@ -33,7 +33,6 @@ function(device, body, title, type = "note",
          u = "https://api.pushbullet.com/api/devices",
          curl = getPushBulletHandle(key))
 {
-
   params = list(device_iden = device, type = type, title = title, body = body)
   ans = postForm(u, .params = params, style = "POST", 
                   .opts = list(...), curl = curl)
