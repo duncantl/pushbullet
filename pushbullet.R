@@ -2,7 +2,7 @@ library(RCurl)
 library(RJSONIO) # or json or JSONlite
 
 devices =
-function(key = getOption("PushBulletKey", stop("Need key")),
+function(key = getOption("PushBulletKey", stop("Need an API key for pushbullet")),
          ...,
          u = "https://api.pushbullet.com/api/devices",
          curl = getPushBulletHandle(key))
@@ -12,7 +12,7 @@ function(key = getOption("PushBulletKey", stop("Need key")),
 }
 
 getPushBulletHandle =
-function(key = getOption("PushBulletKey", stop("Need key")),
+function(key = getOption("PushBulletKey", stop("Need an API key for pushbullet")),
          curl = getCurlHandle(), ...)
 {
   curlSetOpt(userpwd = sprintf("%s:", key),
@@ -28,9 +28,9 @@ function(key = getOption("PushBulletKey", stop("Need key")),
 
 push =
 function(device, body, title, type = "note",
-         key = getOption("PushBulletKey", stop("Need key")),
+         key = getOption("PushBulletKey", stop("Need an API key for pushbullet")),
          ...,
-         u = "https://api.pushbullet.com/api/devices",
+         u = "https://api.pushbullet.com/api/pushes",
          curl = getPushBulletHandle(key))
 {
   params = list(device_iden = device, type = type, title = title, body = body)
